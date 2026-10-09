@@ -577,3 +577,10 @@ a.info-card:hover .ico-md{background:var(--accent);transform:rotate(-10deg)}
 @keyframes baPulse{0%{transform:scale(.6);opacity:.55}100%{transform:scale(2.1);opacity:0}}
 .ba-stage{background:radial-gradient(70% 60% at 50% 35%,#24324b 0%,#121b2c 60%,#0b111c 100%)}
 @media (max-width:640px){.ba-lbl{display:none}}
+
+/* call panel (replaces quote form) */
+.call-steps{list-style:none;padding:0;margin:24px 0 4px;display:grid;gap:10px}
+.call-steps li{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--steel);line-height:1.5}
+.call-steps b{font-family:var(--head);font-size:13px;color:var(--accent);padding-top:2px;flex:none}
+.call-steps strong{color:#fff}
+.form .call-panel__dir{margin-top:10px}

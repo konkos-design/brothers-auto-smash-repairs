@@ -67,13 +67,14 @@
 
   /* ---------- mobile menu ---------- */
   const burger = $('.burger');
+  const closeMenu = () => {document.body.classList.remove('menu-open'); if(burger)burger.setAttribute('aria-expanded','false'); const m=$('.mobile-menu'); if(m)m.setAttribute('aria-hidden','true');};
   if (burger) burger.addEventListener('click', () => {
     const open = document.body.classList.toggle('menu-open');
     burger.setAttribute('aria-expanded', open);
     $('.mobile-menu').setAttribute('aria-hidden', !open);
   });
-  $$('.mobile-menu a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('menu-open')));
-  addEventListener('keydown', e => { if (e.key === 'Escape') document.body.classList.remove('menu-open'); });
+  $$('.mobile-menu a').forEach(a => a.addEventListener('click', closeMenu));
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
   /* ---------- magnetic buttons ---------- */
   if (fine && !reduce) {
@@ -85,17 +86,7 @@
       });
       b.addEventListener('mouseleave', () => { b.style.transform = ''; });
     });
-    // cursor ring
-    const c = document.createElement('div'); c.className = 'cursor'; document.body.appendChild(c);
-    let mx = 0, my = 0, cx = 0, cy = 0;
-    addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; c.classList.add('on'); });
-    document.addEventListener('mouseleave', () => c.classList.remove('on'));
-    const loop = () => { cx += (mx - cx) * 0.2; cy += (my - cy) * 0.2; c.style.left = cx + 'px'; c.style.top = cy + 'px'; requestAnimationFrame(loop); };
-    loop();
-    $$('a, button, .ba-stage, summary, .swatch, .review').forEach(el => {
-      el.addEventListener('mouseenter', () => c.classList.add('big'));
-      el.addEventListener('mouseleave', () => c.classList.remove('big'));
-    });
+
   }
 
   /* ---------- tilt on cards ---------- */
